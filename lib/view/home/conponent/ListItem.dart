@@ -8,6 +8,8 @@ ListView ItemCards(AsyncSnapshot<List<PostModel>> snapshot) {
     itemBuilder: (context, index) {
       final PostModel post = posts[index];
       return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Column(children: [
             Container(
@@ -32,19 +34,30 @@ ListView ItemCards(AsyncSnapshot<List<PostModel>> snapshot) {
           //define a cardview
 
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Container(
+              const SizedBox(
                   width: 200,
                   height: 20,
-                  margin: const EdgeInsets.only(top: 5),
-                  decoration: const BoxDecoration(color: Colors.amber),
-                  child: Text('Descriptions: ')),
-              Container(
+                  child: Text(
+                    'Descriptions: ',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  )),
+              SizedBox(
                   width: 200,
-                  margin: const EdgeInsets.only(top: 5),
-                  decoration: const BoxDecoration(color: Colors.amber),
-                  child: Text(post.title.toString()))
+                  height: 50,
+                  child: Text(
+                    post.title.toString(),
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 154, 126, 25), fontSize: 12),
+                  )),
+              const SizedBox(
+                  width: 200,
+                  height: 20,
+                  child: Text(
+                    'View Detail',
+                    style: TextStyle(color: Color.fromARGB(255, 124, 47, 47)),
+                  ))
             ],
           ),
         ],
