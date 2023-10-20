@@ -1,4 +1,5 @@
 import 'package:courses_app/models/post.dart';
+import 'package:courses_app/view/home/detail.dart';
 import 'package:flutter/material.dart';
 
 ListView ItemCards(AsyncSnapshot<List<PostModel>> snapshot) {
@@ -45,19 +46,29 @@ ListView ItemCards(AsyncSnapshot<List<PostModel>> snapshot) {
                   )),
               SizedBox(
                   width: 200,
-                  height: 50,
+                  height: 30,
                   child: Text(
                     post.title.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color.fromARGB(255, 154, 126, 25), fontSize: 12),
                   )),
-              const SizedBox(
-                  width: 200,
-                  height: 20,
-                  child: Text(
+              SizedBox(
+                width: 200,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailPage(
+                                  detail: post,
+                                )));
+                  },
+                  child: const Text(
                     'View Detail',
                     style: TextStyle(color: Color.fromARGB(255, 124, 47, 47)),
-                  ))
+                  ),
+                ),
+              )
             ],
           ),
         ],
